@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  /* Фирменная палитра из брифа. Свериться с точным оттенком оригинального логотипа. */
+  --color-brand: #1689f5;
+  --color-brand-deep: #0b6bd6; /* кнопки и ссылки на белом: контраст ≥ 5:1 */
+  --color-navy: #071b36;
+  --color-sky: #eff7ff;
+  --color-cyan: #38c9f2;
+  --color-ink: #15243a;
+
+  --font-sans: "Onest Variable", system-ui, sans-serif;
+  --font-display: "Unbounded Variable", "Onest Variable", system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+  --shadow-card: 0 1px 2px rgb(7 27 54 / 0.06), 0 12px 28px -16px rgb(7 27 54 / 0.22);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: #ffffff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 0.375rem;
+  }
+  ::selection {
+    background: var(--color-cyan);
+    color: var(--color-navy);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Раскрытие FAQ без JS */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
